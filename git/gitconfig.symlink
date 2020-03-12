@@ -10,7 +10,7 @@
 	new = town hack
 	qlog = "!f() { git log --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ae%Creset %C(auto)%d%Creset %s%n' -n ${1-1}; }; f"
 	switch = "!f(){ git checkout $1 && git qlog; }; f"
-	submit = "!f() { git commit -am \"$@\" && git town new-pull-request; }; f"
+	submit = "!f() { git add -A && git commit -am \"$@\" && git town new-pull-request; }; f"
 	migrate = "!f(){ CURRENT=$(git symbolic-ref --short HEAD); git checkout -b $1 && git branch --force $CURRENT ${3-$CURRENT@{u}} && git rebase --onto ${2-master} $CURRENT; }; f"
 	done = !git checkout master && git sync && git town prune-branches
 	aliases = !git config --get-regex 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
