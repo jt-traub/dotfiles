@@ -1,0 +1,14 @@
+[user]
+	email = jt@remind101.com
+	name = JT Traub
+[alias]
+	sync = town sync
+	undo = 	reset HEAD~1 --mixed
+	amend = commit -a --amend
+	new = town hack
+	submit = town new-pull-request
+	done = !git checkout master && git town prune-branches
+	aliases = !git config --get-regex 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
