@@ -1,3 +1,5 @@
+[core]
+	pager = cat
 [user]
 	email = jt@remind101.com
 	name = JT Traub
@@ -6,8 +8,12 @@
 	undo = 	reset HEAD~1 --mixed
 	amend = commit -a --amend
 	new = town hack
-	submit = town new-pull-request
-	done = !git checkout master && git town prune-branches
+	qlog = "!f() { git log --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ae%Creset %C(auto)%d%Creset %s%n' -n ${1-1}; }; f"
+	switch = "!f(){ git checkout $1 && git qlog; }; f"
+	pr = !git push && git town new-pull-request
+	submit = "!f() { git add -A && git commit -am \"$@\"; }; f"
+	migrate = "!f(){ CURRENT=$(git symbolic-ref --short HEAD); git checkout -b $1 && git branch --force $CURRENT ${3-$CURRENT@{u}} && git rebase --onto ${2-master} $CURRENT; }; f"
+	done = !git checkout master && git sync && git town prune-branches
 	aliases = !git config --get-regex 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 
 [url "git@github.com:"]
