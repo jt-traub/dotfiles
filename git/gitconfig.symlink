@@ -1,5 +1,6 @@
-[core]
-	pager = cat
+[pager]
+	stash = false
+	log = false
 [user]
 	email = jt@remind101.com
 	name = JT Traub
