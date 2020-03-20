@@ -1,6 +1,7 @@
 [pager]
 	stash = false
 	log = false
+	branch = false
 [user]
 	email = jt@remind101.com
 	name = JT Traub
