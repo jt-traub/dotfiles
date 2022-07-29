@@ -15,8 +15,14 @@
 	pr = !git push && git town new-pull-request
 	submit = "!f() { git sync && git add -A && git commit -eam \"$@\"; }; f"
 	migrate = "!f(){ CURRENT=$(git symbolic-ref --short HEAD); git checkout -b $1 && git branch --force $CURRENT ${3-$CURRENT@{u}} && git rebase --onto ${2-master} $CURRENT; }; f"
-	done = !git checkout master && git sync && git town prune-branches
+	done = !git checkout `git town main-branch` && git sync && git town prune-branches
 	aliases = !git config --get-regex 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
-
+	fixup = !git commit -a --fixup HEAD
+        squash = !git -c sequence.editor=: rebase -i --autosquash HEAD~2
+        force = !git push -f
+        squashup = !git fixup && git squash
+        forcesquash = !git squashup && git force
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[pull]
+	rebase = false

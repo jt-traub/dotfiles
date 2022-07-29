@@ -104,21 +104,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# empire v2 aliases
-alias emp-staging="EMPIRE_API_URL=https://empirev2.classchirp.com emp"
-alias emp-prod="EMPIRE_API_URL=https://empirev2.remind.com emp"
-
-# Set up Go
-export GOPATH="/Users/jttraub/remind/go"
+alias trim="awk '{ gsub(/^[ \t]+|[ \t]+$/, \"\"); print }'"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-eval "$(rbenv init -)"
-
 [[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
-
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$GOPATH/bin:$PATH"
