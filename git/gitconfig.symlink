@@ -1,12 +1,19 @@
+# The include path is for things which you might want to customize per machine/environment
+# For me, that includes my name/email since I share the global config for work and personal
+# development
+# IE
+#
+# [user]
+#	name = JT Traub
+#	email = jt@remind101.com
+#
+
+[include]
+	path = ~/.gitconfig.local
 [pager]
 	stash = false
 	log = false
 	branch = false
-[user]
-	name = JT Traub
-	email = jtraub@gmail.com
-[credential]
-	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager-core.exe
 [alias]
 	sync = town sync
 	undo = 	reset HEAD~1 --mixed
@@ -17,7 +24,7 @@
 	pr = !git push && git town new-pull-request
 	submit = "!f() { git sync && git add -A && git commit -eam \"$@\"; }; f"
 	migrate = "!f(){ CURRENT=$(git symbolic-ref --short HEAD); git checkout -b $1 && git branch --force $CURRENT ${3-$CURRENT@{u}} && git rebase --onto ${2-master} $CURRENT; }; f"
-	done = !git checkout `git town config main-branch` && git sync && git town prune-branches
+	done = !git sync && git checkout `git town config main-branch` && git sync
 	aliases = !git config --get-regex 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 	fixup = !git commit -a --fixup HEAD
         squash = !git -c sequence.editor=: rebase -i --autosquash HEAD~2
@@ -30,5 +37,10 @@
 	rebase = false
 [init]
 	defaultBranch = main
-[core]
-	editor = vim
+[diff]
+	wsErrorHighlight = all
+[git-town]
+	sync-feature-strategy = rebase
+	main-branch = master
+	perennial-branches =
+	push-new-branches = true
