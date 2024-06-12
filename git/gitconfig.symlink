@@ -44,6 +44,7 @@
         repo = town repo
         set-parent = town set-parent
         ship = town ship
+	compress = town compress
 [url "git@github.com:"]
         insteadOf = https://github.com/
 [pull]
