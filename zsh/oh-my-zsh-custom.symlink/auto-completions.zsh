@@ -1,1 +1,1 @@
-fpath=($ZSH_CUSTOM/completions $fpath)
+fpath=($fpath $ZSH_CUSTOM/completions)
