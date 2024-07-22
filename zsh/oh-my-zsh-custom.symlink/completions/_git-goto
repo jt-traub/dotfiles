@@ -1,0 +1,2 @@
+#compdef git
+_git-goto() { __git_branch_names }
