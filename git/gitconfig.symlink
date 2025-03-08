@@ -19,7 +19,7 @@
         undo = reset HEAD~1 --mixed
         amend = commit -a --amend
         new = town hack
-        qlog = "!f() { git log --pretty=format:'%C(yellow)%h%Creset %C(cyan)%ae%Creset %C(auto)%d%Creset %s%n' -n ${1-1}; }; f"
+        qlog = "!f() { git log --pretty=tformat:'%C(yellow)%h%Creset %C(cyan)%ae%Creset %C(auto)%d%Creset %s' -n ${1-1}; }; f"
         goto = "!f() { git checkout $1 && git qlog; }; f"
         pr = !git push && git town new-pull-request
         submit = "!f() { git sync && git add -A && git commit -eam \"$@\"; }; f"
