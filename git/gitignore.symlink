@@ -2,6 +2,8 @@
 Icon?
 .DS_Store
 
+.solargraph.yml
+
 # Thumbnails
 ._*
 
