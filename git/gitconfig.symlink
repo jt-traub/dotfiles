@@ -7,9 +7,6 @@
 #        name = JT Traub
 #        email = jt@remind101.com
 #
-
-[include]
-        path = ~/.gitconfig.local
 [pager]
         stash = false
         log = false
@@ -58,4 +55,7 @@
         sync-feature-strategy = rebase
         main-branch = master
         perennial-branches =
-        push-new-branches = true
+	push-new-branches = true
+
+[include]
+	path = ~/.gitconfig.local
